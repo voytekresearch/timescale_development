@@ -1,2 +1,2 @@
 # timescale_development
-Repository for experimental timescale development paper
+Repository for experimental timescale development paper. Reamped! Revised! Reorganized! Revitalized! The tango goes on...
