@@ -44,12 +44,34 @@ def bin_spikes(spike_times, bin_size, bins_per_window=None, fs=20000, n_recordin
     return spikes
 
 
+# def trial_average_spectrum_welch(trial_data, fs, f_range=None):
+#     power_all = []
+#     for trial in trial_data:
+#         print(np.array(trial))
+#         freq, power = compute_spectrum(
+#             np.array(trial), fs, method='welch', f_range=f_range)
+#         power_all.append(power)
+#     power_all_np = np.array(power_all)
+#     power_avg = np.mean(power_all_np, axis=0)
+#     return freq, power_avg
+
+
 def trial_average_spectrum_welch(trial_data, fs, f_range=None):
     trial_data_np = np.array(trial_data)
     freq, power = compute_spectrum(
-        trial_data_np, fs, method='welch', avg_type='median',f_range=f_range)
+        trial_data_np, fs, method='welch', avg_type='median', f_range=f_range)
     power_avg = np.mean(power, axis=0)
     return freq, power_avg
+
+# def trial_average_spectrum_welch(trial_data, fs, f_range=None):
+#     trial_data_np = np.array(trial_data)
+#     if trial_data_np.size > 0:
+#         freq, power = compute_spectrum(
+#             trial_data_np, fs, method='welch', avg_type='median', f_range=f_range)
+#         power_avg = np.mean(power, axis=0)
+#     else:
+#         freq,power_avg = np.array(np.nan),np.array(np.nan)
+#     return freq, power_avg
 
 
 def compute_ar_spectrum_(spikes, fs, ar_order, f_range=None):
@@ -64,7 +86,8 @@ def compute_ar_spectrum_(spikes, fs, ar_order, f_range=None):
 def trial_average_spectrum_ar(trial_data, fs, ar_order, f_range=None):
     power_all = []
     for trial in trial_data:
-        freq, power = compute_ar_spectrum_(trial, fs, ar_order, f_range=f_range)
+        freq, power = compute_ar_spectrum_(
+            trial, fs, ar_order, f_range=f_range)
         power_all.append(power)
     power_all_np = np.array(power_all)
     power_avg = np.mean(power_all_np, axis=0)
