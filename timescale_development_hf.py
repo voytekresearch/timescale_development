@@ -13,6 +13,9 @@ def get_dpdf(time_object, day_diff):
     # days post differentiation in days
     days = duration.days
     dpdf = int(divmod(duration_in_s, 86400)[0])      # Seconds in a day = 86400
+    # add 56 days (8 weeks) to calculated day - first recording was done at 8 weeks
+    # post differentiation
+    dpdf = dpdf + 56
 
     return dpdf
 
