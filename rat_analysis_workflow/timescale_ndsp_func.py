@@ -93,3 +93,15 @@ def compute_ar_spectrum_(spikes, fs, ar_order, f_range=None):
 def mean(x, y):
     """Mean psd per window."""
     return x, np.nanmean(y, axis=0)
+
+
+
+# def mean(x, y):
+#     """Mean psd per window."""
+    
+#     y_out = np.nanmean(y, axis=0)
+#     if np.any(np.isnan(y_out)):
+#         print(y_out)
+#         breakme
+    
+#     return x, y_out
